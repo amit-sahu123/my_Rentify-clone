@@ -1,0 +1,7 @@
+$primary-color: orange;
+$bg-color: rgb(230, 217, 191);
+ 
+:export {
+  primaryColor: $primary-color;
+  bg_color: $bg-color;
+}
