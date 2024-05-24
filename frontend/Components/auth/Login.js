@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 const LoginComponent = () => {
     const { login } = useAuth();
     const [email, setEmail] = useState('');
@@ -10,8 +11,7 @@ const LoginComponent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await login(email, password);
-            router.push('/properties'); // Redirect to the properties page after login
+            await login(email, password); // Redirect to the properties page after login
         } catch (error) {
             console.log('error in login :', error)
         }
@@ -37,6 +37,7 @@ const LoginComponent = () => {
                     required
                 />
                 <button type="submit">Login</button>
+                <p style={{textAlign:'center'}}>New to Rentify, Please <Link href='/register'>Click Here</Link>  Register your self !</p>
             </form>
         </div>
     );
