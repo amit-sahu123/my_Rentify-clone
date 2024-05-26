@@ -1,7 +1,7 @@
 html,
 body {
   padding: 0;
-  margin: 28px;
+  margin: 0;
   font-family:
     Inter,
     -apple-system,
@@ -22,14 +22,22 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-  font-family:'cursive';
-  margin: 0px;
-  padding: 0px;
+.container {
+  min-height: 100vh;
+  /* font-family:sans-serif, */
+  padding-top: 10vh;
+  width: 90%;
+  margin: auto;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
+.propertyCard{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 270px;
+  min-width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px 1px;
+  align-items: center;
+  background: #fff;
 }

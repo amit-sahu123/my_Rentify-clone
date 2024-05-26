@@ -6,6 +6,9 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const setUserInfo=(user)=>{
+        setUser(user)
+    }
     console.log('user', user)
     const router = useRouter();
     const login = async (email, password) => {
@@ -15,8 +18,8 @@ export const AuthProvider = ({ children }) => {
             if (response.status === 200) {
                 router.push('/')
             }
-            const responseData = JSON.stringify(response.data);
-            console.log('response data type:', typeof responseData);
+            const responseData = JSON.stringify(response.data.user);
+            console.log('response data type:',typeof responseData);
             localStorage.setItem('userInfo', JSON.stringify(responseData));
             localStorage.setItem('token', response.data.token); // Save the token in local storage
             console.log('response register', response) // Save the token in local storage
@@ -29,8 +32,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await axios.post('http://localhost:5000/api/auth/register', userData);
             setUser(response.data.user);
-            const responseData = JSON.stringify(response.data);
-            localStorage.setItem('userInfo', responseData);
+            const responseData = JSON.stringify(response?.data?.user);
+            localStorage.setItem('userInfo',  JSON.stringify(responseData));
             localStorage.setItem('token', response.data.token); // Save the token in local storage
             console.log('response register', response)
         } catch (error) {
@@ -61,7 +64,7 @@ export const AuthProvider = ({ children }) => {
     // };
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, login, register, logout,setUserInfo }}>
             {children}
         </AuthContext.Provider>
     );

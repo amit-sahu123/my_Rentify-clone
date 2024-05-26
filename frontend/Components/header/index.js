@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function MyHeader() {
-  const { logout } = useAuth();
-  const [user, setUser] = useState(null);
+  const { logout, user, setUserInfo } = useAuth();
+  // const [user, setUser] = useState(null);
   const router = useRouter();
+  let userInfo;
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    setUser(userInfo?.user)
-    // console.log('user localStorage.getItem', user)
+    userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    userInfo = JSON.parse(userInfo);
+    setUserInfo(userInfo)
   }, [])
+  console.log('user localStorage.getItem',   user)
   const handleLogout = () => {
     logout();
     router.push('/login');
@@ -20,12 +22,15 @@ export default function MyHeader() {
   console.log('user', user)
   return (
     <div className={styles.root}>
-      <img src="assets/homeIcon.png" width={90} height={50} style={{ cursor: 'pointer' }} />
+      <Link href="/" style={{display:'flex', alignItems:"center", gap:'20px'}}>
+        <img src="/assets/homeIcon.png" width={90} height={50} style={{ cursor: 'pointer' }} />
+       <h1>Rentify</h1> 
+      </Link>
       <ul className={styles._ul}>
-        <li className={styles.listItem}><a className={styles.active} href="/">Home</a></li>
-        <li className={styles.listItem}><a href="/sell-property">Sell Your Property</a></li>
-        <li className={styles.listItem}><a href="my-properties">My Properties</a></li>
-        <li className={styles.listItem}><a href="about">About</a></li>
+        <li className={styles.listItem}><Link className={styles.active} href="/">Home</Link></li>
+        <li className={styles.listItem}><Link href="/sell-property">Sell Your Property</Link></li>
+        <li className={styles.listItem}><Link href="/my-properties">My Properties</Link></li>
+        <li className={styles.listItem}><Link href="/about">About</Link></li>
       </ul>
       
         {user ? (
@@ -37,12 +42,9 @@ export default function MyHeader() {
           </div>
         ) : (
           <div className={styles.buttonBox}>
-            <a href="/login">Login</a>
+            <Link href="/login">Login</Link>
           </div>
         )}
-      {/* <button variant="primary" onClick={() => handleLogOut()}>
-        LogOut
-      </button> */}
     </div>
   );
 }
