@@ -1,9 +1,11 @@
+import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const PropertyFilter = ({ onFilter }) => {
     const [filters, setFilters] = useState({
         place: '',
         area: '',
+        price: '',
         bedrooms: '',
         bathrooms: '',
         nearbyHospitals: '',
@@ -24,14 +26,15 @@ const PropertyFilter = ({ onFilter }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="place" value={filters.place} onChange={handleChange} placeholder="Place" />
-            <input type="text" name="area" value={filters.area} onChange={handleChange} placeholder="Area" />
-            <input type="number" name="bedrooms" value={filters.bedrooms} onChange={handleChange} placeholder="Bedrooms" />
-            <input type="number" name="bathrooms" value={filters.bathrooms} onChange={handleChange} placeholder="Bathrooms" />
-            <input type="text" name="nearbyHospitals" value={filters.nearbyHospitals} onChange={handleChange} placeholder="Nearby Hospitals" />
-            <input type="text" name="nearbyColleges" value={filters.nearbyColleges} onChange={handleChange} placeholder="Nearby Colleges" />
-            <button type="submit">Apply Filters</button>
+        <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column', gap:'20px'}}>
+            <TextField type="text" name="place" value={filters.place} onChange={handleChange} id="outlined-basic1" label="Place" variant="outlined" />
+            <TextField type="text" name="area" value={filters.area} onChange={handleChange} label="Area" variant="outlined" />
+            <TextField type="number" name="bedrooms" value={filters.bedrooms} onChange={handleChange} label="Bedrooms" variant="outlined" />
+            <TextField type="number" name="bathrooms" value={filters.bathrooms} onChange={handleChange} label="Bathrooms" variant="outlined" />
+            <TextField type="text" name="nearbyHospitals" value={filters.nearbyHospitals} onChange={handleChange} label="Nearby Hospitals" variant="outlined" />
+            <TextField type="text" name="nearbyColleges" value={filters.nearbyColleges} onChange={handleChange} label="Nearby Colleges" variant="outlined" />
+            <TextField type="Number" name="price" value={filters.price} onChange={handleChange} label="Price" variant="outlined" />
+            <Button type="submit" variant='contained'>Apply Filters</Button>
         </form>
     );
 };

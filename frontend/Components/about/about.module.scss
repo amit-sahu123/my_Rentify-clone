@@ -1,0 +1,34 @@
+.about-page {
+    padding: 20px;
+    background-color: rgb(218, 237, 254);
+}
+
+.about-page section {
+    margin-bottom: 40px;
+}
+
+.about-page h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-page p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.about-page ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-page ul li {
+    margin-bottom: 10px;
+}
+
+.about-page blockquote {
+    font-style: italic;
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 5px solid #ccc;
+}

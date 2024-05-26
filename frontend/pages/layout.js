@@ -11,14 +11,7 @@ export default function BaseLayout({ children }) {
 
       }}
     >
-      <div
-      style={{
-        minHeight:'100vh',
-        fontFamily:"sans-serif",
-        paddingTop: "10vh",
-        width:"90%",
-        margin:'auto'
-      }}>
+      <div className='container'>
         <MyHeader />
         {children}
       </div>

@@ -1,7 +1,6 @@
 import { AuthProvider } from "../context/AuthContext";
 import BaseLayout from "./layout";
-// import "../styles/global.css"
-// import '../components/styles/Button.scss';
+import "../styles/global.css"
 
 function Home({ Component, pageProps }) {
     return (

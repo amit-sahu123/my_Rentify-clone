@@ -7,8 +7,8 @@ const SellProperty = () => {
     const router = useRouter();
 
     const handleAddProperty = async (property) => {
+        const token = localStorage.getItem('token'); // Assuming you have saved the token in localStorage
         try {
-            const token = localStorage.getItem('token'); // Assuming you have saved the token in localStorage
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
